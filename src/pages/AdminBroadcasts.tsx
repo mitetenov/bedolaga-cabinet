@@ -159,7 +159,11 @@ export default function AdminBroadcasts() {
                   </div>
                   <p className="truncate text-sm text-dark-100">{broadcast.message_text}</p>
                   <div className="mt-2 flex items-center gap-4 text-xs text-dark-400">
-                    <span>{broadcast.target_type}</span>
+                    <span>
+                      {broadcast.audience
+                        ? `${t('admin.broadcasts.audience.conditions')} (${broadcast.audience.conditions.length})`
+                        : broadcast.target_type}
+                    </span>
                     <span>
                       {broadcast.sent_count}/{broadcast.total_count}
                       {broadcast.blocked_count > 0 && (
